@@ -15,6 +15,7 @@ public class Product {
 	private String category;
 	private String thumbnail;
 	private List<String> images;
+	private List<String> mobile;
 
 	public Integer getId() {
 		return id;
@@ -109,6 +110,14 @@ public class Product {
 		return "Product [id=" + id + ", title=" + title + ", description=" + description + ", price=" + price
 				+ ", discountPercentage=" + discountPercentage + ", rating=" + rating + ", stock=" + stock + ", brand="
 				+ brand + ", category=" + category + ", thumbnail=" + thumbnail + ", images=" + images + "]";
+	}
+
+	public List<String> getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(List<String> mobile) {
+		this.mobile = mobile;
 	}
 
 }

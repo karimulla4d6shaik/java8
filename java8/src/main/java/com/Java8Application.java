@@ -1,9 +1,8 @@
 package com;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,8 +15,19 @@ public class Java8Application {
 		SpringApplication.run(Java8Application.class, args);
 		Products products = readData(); 
 		List<Product> listOfProducts = products.getProducts();
-		
-		
+		listOfProducts.forEach(p -> {
+			List<String> mobiles = new ArrayList<>();
+			if(p.getPrice().doubleValue() == 280) {
+				mobiles.add("7995952191");
+				p.setMobile(mobiles);
+			}else {
+				mobiles.add("8335837230");
+				p.setMobile(mobiles);
+			}
+		});
+		List<Product> listProducts = listOfProducts.stream()
+				.filter(p -> p.getMobile().stream().noneMatch(s -> s.startsWith("833"))).collect(Collectors.toList());
+		listProducts.forEach(p -> System.out.println(p));
 	}
 
 	/*
